@@ -1,0 +1,74 @@
+
+.stats-page {
+    padding-bottom: 40px;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .stat-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .stat-card h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #4a5568;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0;
+  }
+  
+  .stat-card.total {
+    border-top: 4px solid #805ad5;
+  }
+  
+  .stat-card.owned {
+    border-top: 4px solid #38a169;
+  }
+  
+  .stat-card.reading {
+    border-top: 4px solid #3182ce;
+  }
+  
+  .stat-card.tobuy {
+    border-top: 4px solid #e53e3e;
+  }
+  
+  .top-author-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .top-author-section h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #2d3748;
+  }
+  
+  .no-stats {
+    text-align: center;
+    padding: 40px 0;
+    color: #718096;
+    font-style: italic;
+  }
+  
+  @media (max-width: 600px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }

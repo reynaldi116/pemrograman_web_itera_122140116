@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Dasar - Black & White</title>
+    <style>
+        /* Reset dan styling global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            background-color: #252525;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #666;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-secondary {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+        .btn-secondary:hover {
+            background-color: #444;
+        }
+
+        .btn-success {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .btn-success:hover {
+            background-color: #ccc;
+        }
+
+        .btn-danger {
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .btn-danger:hover {
+            background-color: #222;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Tombol bulat untuk todo list */
+        .round-btn {
+            border-radius: 50% !important;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        /* Todo list styling */
+        .todo-container {
+            margin-top: 20px;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: #252525;
+            border-radius: 4px;
+            border-left: 4px solid #666;
+            transition: all 0.3s ease;
+        }
+
+        .todo-item:hover {
+            border-left-color: #fff;
+        }
+
+        .todo-item.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+            border-left-color: #444;
+        }
+
+        .todo-item span {
+            flex: 1;
+            margin-right: 10px;
+            word-break: break-all;
+        }
+
+        .todo-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Kalkulator */
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .calculator-result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #252525;
+            border-radius: 4px;
+            min-height: 40px;
+        }
+
+        /* Form validasi */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            background-color: #2e2e2e;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 15px;
+            text-align: center;
+            border: 1px solid #444;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Loading spinner */
+        .loader {
+            border: 3px solid #333;
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animation for Add Todo button */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .btn-pulse:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* Shake animation for invalid input */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        /* Status messages */
+        .status-message {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .status-error {
+            background-color: rgba(255, 77, 77, 0.2);
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+        }
+
+        .status-success {
+            background-color: rgba(45, 45, 45, 0.5);
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 600px) {
+            .calculator-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- To-Do List Section -->
+        <div class="section">
+            <h1>Daftar Tugas (To-Do List)</h1>
+            <div>
+                <input type="text" id="todo-input" placeholder="Tambahkan tugas baru...">
+                <button id="btn-tambah-item" class="btn-primary btn-block btn-pulse">Tambah Tugas</button>
+                <button id="btn-load-todos" class="btn-secondary btn-block">Muat Tugas dari API</button>
+                <div id="todo-status" class="status-message hidden"></div>
+            </div>
+            <div id="todo-output" class="todo-container"></div>
+            <div id="todo-loader" class="loader hidden"></div>
+        </div>
+
+        <!-- Kalkulator Section -->
+        <div class="section">
+            <h2>Kalkulator</h2>
+            <div>
+                <input type="number" id="angka1" placeholder="Angka 1">
+                <input type="number" id="angka2" placeholder="Angka 2">
+                
+                <div class="calculator-buttons">
+                    <button id="btn-tambah" class="btn-secondary">+</button>
+                    <button id="btn-kurang" class="btn-secondary">-</button>
+                    <button id="btn-kali" class="btn-secondary">×</button>
+                    <button id="btn-bagi" class="btn-secondary">÷</button>
+                    <button id="btn-pangkat" class="btn-secondary">^</button>
+                    <button id="btn-akar" class="btn-secondary">√</button>
+                    <button id="btn-modulus" class="btn-secondary">%</button>
+                    <button id="btn-clear" class="btn-danger">C</button>
+                </div>
+                <button id="btn-calculate-api" class="btn-primary btn-block">Hitung dengan API</button>
+                <div id="hasil-kalkulator" class="calculator-result"></div>
+                <div id="calculator-loader" class="loader hidden"></div>
+                <div id="calculator-status" class="status-message hidden"></div>
+            </div>
+        </div>
+
+        <!-- Form Validasi Section -->
+        <div class="section">
+            <h2>Form Validasi</h2>
+            <form id="form-validasi">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama">
+                    <p id="error-nama" class="error-message"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email">
+                    <p id="error-email" class="error-message"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password">
+                    <p id="error-password" class="error-message"></p>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block">Submit</button>
+                <button type="button" id="btn-validate-email-api" class="btn-secondary btn-block">Validasi Email dengan API</button>
+            </form>
+            <div id="form-success" class="success-message hidden">
+                Form berhasil divalidasi!
+            </div>
+            <div id="validation-loader" class="loader hidden"></div>
+            <div id="validation-status" class="status-message hidden"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+.home-page {
+    padding-bottom: 40px;
+  }
+  
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .actions-bar h2 {
+    margin: 0;
+  }
+  
+  .add-form-container {
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .books-container {
+    min-height: 200px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .actions-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .actions-bar button {
+      width: 100%;
+    }
+  }
+
+  

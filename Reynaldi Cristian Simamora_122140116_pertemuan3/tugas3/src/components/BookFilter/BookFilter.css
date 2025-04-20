@@ -1,0 +1,75 @@
+.book-filter {
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filter-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-section label {
+    margin-right: 10px;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  
+  .filter-section select {
+    width: auto;
+    margin-bottom: 0;
+  }
+  
+  .search-section {
+    flex: 1;
+    max-width: 400px;
+    margin-left: 20px;
+    position: relative;
+  }
+  
+  .search-section input {
+    width: 100%;
+    padding-right: 30px;
+    margin-bottom: 0;
+  }
+  
+  .clear-search {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .clear-search:hover {
+    color: #4a5568;
+  }
+  
+  @media (max-width: 600px) {
+    .book-filter {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .filter-section, .search-section {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+    }
+    
+    .filter-section {
+      margin-bottom: 12px;
+    }
+  }
+
+  

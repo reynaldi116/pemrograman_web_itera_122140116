@@ -1,0 +1,88 @@
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .book-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-info {
+    flex: 1;
+  }
+  
+  .book-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #2d3748;
+    font-size: 18px;
+  }
+  
+  .book-author {
+    color: #4a5568;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  
+  .book-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  .status-owned {
+    background-color: #c6f6d5;
+    color: #276749;
+  }
+  
+  .status-reading {
+    background-color: #bee3f8;
+    color: #2b6cb0;
+  }
+  
+  .status-tobuy {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+  }
+  
+  .book-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .book-actions button {
+    flex: 1;
+    margin: 0 4px;
+  }
+  
+  .no-books {
+    text-align: center;
+    padding: 40px 0;
+    color: #718096;
+    font-style: italic;
+  }
+  
+  @media (max-width: 600px) {
+    .book-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  
